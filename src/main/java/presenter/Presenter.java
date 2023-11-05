@@ -34,6 +34,9 @@ public class Presenter {
         dataBase.saveChanges();
     }
 
+    /**
+     * Сравнение на наличие изменений в буфере (список объектов) с базой данных (текстовый файл)
+     */
     public boolean compareData() {
         List<HumanFriend> originalData = new LinkedList<>();
         fillListFromLocalDB(originalData);
@@ -44,6 +47,9 @@ public class Presenter {
         dataBase.add(animal);
     }
 
+    /**
+     * Вывод списка животных
+     */
     public void showAnimals() {
         List<HumanFriend> animals = dataBase.getAnimals();
         for (int i = 0; i < animals.size(); i++) {
@@ -67,8 +73,9 @@ public class Presenter {
         return dataBase.getAnimals().get(index).getCommands();
     }
 
-    //for main
-    //Только в том случае, если локальная база данных не существовала
+    /**
+     * Метод для стартового заполнения БД для отображения функционала (в случае, если БД не создана ранее)
+     */
     public void initiate() {
         Cat cat1 = new Cat("Пушистик", new Date(28, 2, 2023));
         Cat cat2 = new Cat("Селин", new Date(2, 1, 2022));
@@ -98,6 +105,9 @@ public class Presenter {
         dataBase.saveChanges();
     }
 
+    /**
+     * Считка информации из локальной БД (текстовый файл с объектами в json-формате) в буфер (список объектов)
+     */
     public void fillListFromLocalDB(List<HumanFriend> list) {
         list.clear();
         try
@@ -132,6 +142,9 @@ public class Presenter {
         }
     }
 
+    /**
+     * Вывод счетчика с общим количеством созданных животных
+     */
     public int getCounter() {
         int res;
         try (Counter counter = new Counter()) {

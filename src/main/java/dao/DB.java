@@ -26,6 +26,9 @@ public class DB<T> {
         return this;
     }
 
+    /**
+     * Создание БД в случае, если она отсутствует в корневой папке проекта
+     */
     public boolean createJsonDataBase() {
         File jsonDataBase = new File(jsonDataBaseName);
         if (!jsonDataBase.exists()) {
@@ -43,6 +46,9 @@ public class DB<T> {
         return animals;
     }
 
+    /**
+     * Сохранение объектов списка в текстовый файл в json-формате построчно
+     */
     public void saveChanges() {
         try (FileWriter writer = new FileWriter(jsonDataBaseName, false)) { //будет перезаписывать
             Gson gson = new Gson();
