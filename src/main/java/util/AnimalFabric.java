@@ -14,6 +14,9 @@ import java.util.List;
 
 public class AnimalFabric {
 
+    /**
+     * Создание животного по принципу дизайн-паттерна "Фабрика"
+     */
     public HumanFriend createNewAnimal(int choiceOfTypeAnimal, List<String> animal) {
         try (Counter counter = new Counter()) {
             counter.add();

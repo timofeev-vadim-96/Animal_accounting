@@ -95,12 +95,18 @@ public class View {
                 "EXIT - для выхода");
     }
 
+    /**
+     * Метод для получения стринговых значений с приглашением
+     */
     private String prompt(String message) {
         scanner = new Scanner(System.in);
         System.out.println(message);
         return scanner.nextLine();
     }
 
+    /**
+     * Получение и парсинг с проверкой на валидность параметров животного
+     */
     private List<String> getNewAnimal() {
         String newAnimal = prompt("Чтобы добавить новое животное в реестр, введите через пробел: \n" +
                 "Имя и дату рождения в формате дд.мм.гггг. \n" +
@@ -152,6 +158,9 @@ public class View {
         return animal;
     }
 
+    /**
+     * Получение и проверка на существование полученного индекса
+     */
     private int checkAnimalIndex() {
         int indexInt = getAnimalIndex();
         while (indexInt >= presenter.animalsQuantity()) {
@@ -163,6 +172,9 @@ public class View {
         return indexInt;
     }
 
+    /**
+     * Получение и проверка введенного индекса на валидность
+     */
     private int getAnimalIndex() {
         String index = prompt("Введите индекс животного: ");
         boolean id = validator.numbValidate(index);
@@ -173,6 +185,9 @@ public class View {
         return Integer.parseInt(index);
     }
 
+    /**
+     * Получение и проверка числа на валидность
+     */
     private int getCorrectNumb() {
         String index = prompt("Введите число: ");
         boolean id = validator.numbValidate(index);
@@ -183,6 +198,9 @@ public class View {
         return Integer.parseInt(index);
     }
 
+    /**
+     * Выход с проверкой на сохранение внесенных изменений
+     */
     private void exit() {
         if (!presenter.compareData()) {
             String answer = prompt
